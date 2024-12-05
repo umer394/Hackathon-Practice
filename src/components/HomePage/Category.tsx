@@ -4,8 +4,8 @@ import { CategoryCarousel } from "./CategoryCrousel";
 
 export default function Category(){
     return (
-        <main className="mt-24">
-            <div>
+        <main>
+            <div  className="my-24">
                 <section className="flex items-center gap-3">
                     <div className="bg-[#DB4444] w-4 rounded-sm py-4 "/>
                     <h1 className="text-[#DB4444] font-semibold">Categories</h1>
