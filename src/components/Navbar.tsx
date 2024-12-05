@@ -6,7 +6,7 @@ import Image from "next/image"
 export default function Navbar(){
  
     return (
-        <main className="flex flex-col">
+        <main className="flex flex-col overflow-clip">
             <section className="bg-black">
                 <header className=" flex justify-between p-2 max-w-4xl mx-auto">
                     <div className="flex space-x-4">
@@ -36,7 +36,7 @@ export default function Navbar(){
                 <div className="flex items-center gap-4">
                     <div className="flex items-center ">
                         <input type="text" className=" bg-slate-100 w-64 py-[5px]  pl-[12px] pr-[20px] placeholder:text-sm placeholder:text-black rounded-sm" placeholder="what are you looking for?"/>
-                        <Image src={"/navbar/search.png"} alt={"heart"} width={16} height={15} className="absolute right-[135px]"/> 
+                        <Image src={"/navbar/search.png"} alt={"search"} width={16} height={15} className="absolute md:right-[156px]"/> 
                     </div>
                     <div>
                         <Image src={"/navbar/heart.png"} alt={"heart"} width={20} height={18} className="relative "/>     

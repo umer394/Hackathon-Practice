@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Poppins } from "next/font/google"; // Import the Poppins font
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 // Load custom local fonts (Geist Sans and Geist Mono)
 const geistSans = localFont({
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
+        <Navbar/>
         {children}
       </body>
     </html>
