@@ -121,9 +121,8 @@ export const CategoryItem:Category[] = [
     },
     {
         id:4,
-        img:"/Category/pic4.png",
+        img:"/Category/camera.png",
         text:"Camera",
-        clasName:"text-white bg-[#DB4444] bg-cover"
     },
     {
         id:5,

@@ -13,7 +13,7 @@ export default function SellingCarousel(){
       }}
       className="w-full"
     >
-      <CarouselContent>
+      <CarouselContent className="flex flex-wrap">
         {sellingItem.map((item) => (
           
           <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/4">

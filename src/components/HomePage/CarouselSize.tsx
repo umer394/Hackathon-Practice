@@ -75,7 +75,7 @@ export function CarouselSize() {
         ))}
         
       </CarouselContent>
-      <div className="absolute bottom-96 right-10">
+      <div className="absolute bottom-[440px] md:bottom-[490px]  xl:bottom-96 right-10">
       <CarouselPrevious />
       <CarouselNext />
       </div>

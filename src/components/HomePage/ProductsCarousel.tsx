@@ -75,10 +75,10 @@ export function ProductsCarousel() {
         ))}
         
       </CarouselContent>
-      <div className="absolute bottom-[850px] right-10">
+      {/* <div className="absolute bottom-[850px] md:hidden right-10">
       <CarouselPrevious />
       <CarouselNext />
-      </div>
+      </div> */}
    
     </Carousel>
   )

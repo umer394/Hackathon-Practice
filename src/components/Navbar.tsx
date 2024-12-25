@@ -1,20 +1,30 @@
-import {Poppins} from "next/font/google"
-import { poppins } from "@/app/layout"
+
 import { Button } from "./ui/button"
 import Link from "next/link"
 import Image from "next/image"
+import {
+    Sheet,
+    SheetContent,
+    SheetDescription,
+    SheetHeader,
+    SheetTitle,
+    SheetTrigger,
+  } from "@/components/ui/sheet"
+  import { RxHamburgerMenu } from "react-icons/rx";
+  
+
 export default function Navbar(){
  
     return (
-        <main className="flex flex-col overflow-clip">
+        <main className="flex flex-col overflow-">
             <section className="bg-black">
                 <header className=" flex justify-between p-2 max-w-4xl mx-auto">
-                    <div className="flex space-x-4">
-                    <h1 className={`text-white text-[14px]`}>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%</h1>
-                    <u className="text-white font-semibold text-[14px]">ShopNow</u>
+                    <div className="md:flex md:space-x-4">
+                    <h1 className={`text-white text-[9px] md:text-[14px]`}>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%</h1>
+                    <u className="text-white font-semibold text-[9px] md:text-[14px]">ShopNow</u>
                     </div>
                     
-                    <h3 className="text-white text-[14px] flex items-center gap-1">
+                    <h3 className="text-white text-[9px] md:text-[14px] flex items-center gap-1">
                         English
                         <span>
                         <Image src={"/navbar/drop.png"} alt={"drop"} width={10} height={10} className="relataive"/>
@@ -22,9 +32,9 @@ export default function Navbar(){
                     </h3>
                 </header>
             </section>
-            <section className="flex border-b-[1px] py-4 justify-center gap-60 border-[#D9D9D9]">
-                <h4 className="font-bold text-2xl">Exclusive</h4>
-                <div className="flex ">
+            <section className="flex border-b-[1px]  py-4 justify-between md:px-10  border-[#D9D9D9] overflow-clip  ">
+                <h4 className="font-bold text-lg pl-2 lg:pl-0 md:text-2xl">Exclusive</h4>
+                <div className="hidden lg:flex">
                 <Link href={""}><Button variant={"link"}>Home</Button></Link>
                 <Link href={""}><Button variant={"link"}>Contact</Button></Link>
                 <Link href={""}><Button variant={"link"}>About</Button></Link>
@@ -33,17 +43,48 @@ export default function Navbar(){
 
                 
         
-                <div className="flex items-center gap-4">
-                    <div className="flex items-center ">
+                <div className="hidden lg:flex items-center gap-4">
+                    <div className="flex items-center relative">
                         <input type="text" className=" bg-slate-100 w-64 py-[5px]  pl-[12px] pr-[20px] placeholder:text-sm placeholder:text-black rounded-sm" placeholder="what are you looking for?"/>
-                        <Image src={"/navbar/search.png"} alt={"search"} width={16} height={15} className="absolute md:right-[156px]"/> 
+                        <Image src={"/navbar/search.png"} alt={"search"} width={16} height={15} className="absolute lg:left-56"/> 
                     </div>
                     <div>
-                        <Image src={"/navbar/heart.png"} alt={"heart"} width={20} height={18} className="relative "/>     
+                        <Image src={"/navbar/heart.png"} alt={"heart"} width={20} height={18} className=" "/>     
                     </div>
                     <div >
-                        <Image src={"/navbar/cart.png"} alt={"cart"} width={23} height={17} className="relataive"/>
+                        <Image src={"/navbar/cart.png"} alt={"cart"} width={23} height={17} className=""/>
                     </div>
+                </div>
+                <div className="lg:hidden pr-2">
+                    <Sheet>
+                        <SheetTrigger><RxHamburgerMenu size={20}/></SheetTrigger>
+                            <SheetContent className="flex flex-col justify-center items-center">
+                                
+                                    <SheetTitle>
+                                    <div className="flex items-center gap-4">
+                                        <div className="hidden md:flex items-center relative">
+                                            <input type="text" className=" bg-slate-100 w-64 py-[5px]  pl-[12px] pr-[20px] placeholder:text-sm placeholder:text-black rounded-sm" placeholder="what are you looking for?"/>
+                                            <Image src={"/navbar/search.png"} alt={"search"} width={16} height={15} className="absolute left-56"/> 
+                                        </div>
+                                        <div>
+                                            <Image src={"/navbar/heart.png"} alt={"heart"} width={20} height={18} className=" "/>     
+                                        </div>
+                                        <div >
+                                            <Image src={"/navbar/cart.png"} alt={"cart"} width={23} height={17} className=""/>
+                                        </div>
+                                    </div>
+                                    </SheetTitle>
+                                    <SheetTitle>
+                                    <div className="flex flex-col space-y-4">
+                                        <Link href={""}><Button variant={"link"}>Home</Button></Link>
+                                        <Link href={""}><Button variant={"link"}>Contact</Button></Link>
+                                        <Link href={""}><Button variant={"link"}>About</Button></Link>
+                                        <Link href={""}><Button variant={"link"}>Sign Up</Button></Link>
+                                    </div>
+                                    </SheetTitle>
+                                
+                            </SheetContent>
+                    </Sheet>
                 </div>
                 
                 

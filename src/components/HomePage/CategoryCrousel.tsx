@@ -26,11 +26,11 @@ export function CategoryCarousel() {
           <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/6">
             <Link href={""}>
             <div className="p-1">
-              <Card className="border-[2px] border-black border-opacity-50">
+              <Card className="border-[2px] border-black border-opacity-50 hover:bg-[#DB4444] ">
                 <CardContent className="  aspect-square px-0">
                     <div className={`${item.clasName} flex flex-col justify-center items-center h-full`}>
                         <Image src={item.img} alt={"img"} width={70} height={20}/>
-                        <h1 className="">{item.text}</h1>
+                        <h1 className="hover:text-white">{item.text}</h1> 
                     </div>
                 </CardContent>
                 
@@ -43,7 +43,7 @@ export function CategoryCarousel() {
         ))}
         
       </CarouselContent>
-      <div className="absolute bottom-64 right-10">
+      <div className="absolute bottom-80 md:bottom-96 lg:bottom-52 xl:bottom-64 right-10">
       <CarouselPrevious />
       <CarouselNext />
       </div>

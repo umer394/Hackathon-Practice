@@ -7,10 +7,10 @@ export default function Products (){
         <div>
             <section className="flex items-center gap-3">
                 <div className="bg-[#DB4444] w-4 rounded-sm py-4 "/>
-                <h1 className="text-[#DB4444] font-semibold">Our Products</h1>
+                <h1 className="text-[#DB4444]  font-semibold">Our Products</h1>
             </section>
             <section className="flex items-center mt-4 max-w-xl justify-between">
-                <h2 className="font-semibold text-3xl">Explore Our Pro</h2>  
+                <h2 className="font-semibold md:text-3xl">Explore Our Products</h2>  
             </section>
             <section className="my-10">
                 <ProductsCarousel/>
