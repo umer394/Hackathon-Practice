@@ -1,10 +1,4 @@
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-  } from "@/components/ui/carousel"
+
 import { CarouselSize } from "./CarouselSize"
 import { Button } from "../ui/button"
   
@@ -15,7 +9,7 @@ export default function FlashSales(){
             <div>
                 <section className="flex items-center gap-3">
                     <div className="bg-[#DB4444] w-4 rounded-sm py-4 "/>
-                    <h1 className="text-[#DB4444] font-semibold text-sm m:text-md">Today's</h1>
+                    <h1 className="text-[#DB4444] font-semibold text-sm m:text-md">Today&apos;s</h1>
                 </section>
                 <section className="md:flex items-center mt-4 max-w-xl md:max-w-full justify-between">
                     <h2 className="font-semibold text-sm md:text-3xl">Flash Sales</h2>

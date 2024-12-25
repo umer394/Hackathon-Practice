@@ -1,9 +1,8 @@
 
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
+import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import Link from "next/link";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
-import { Button } from "../ui/button";
 import { sellingItem } from "@/data/homepage";
 export default function SellingCarousel(){
     return (

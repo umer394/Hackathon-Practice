@@ -26,7 +26,7 @@ export default function Arrival(){
                     <div className="flex flex-col gap-4   -p-6 md:-p-0">
                         <div className="max-w-[700px] bg-[#0e0c0c] md:flex items-center justify-center ">
                         <div className=" flex- flex-col space-y-4 ml-3 mt-16 ">
-                            <h1 className="text-white md:text-xl font-semibold">Women's Collection</h1>
+                            <h1 className="text-white md:text-xl font-semibold">Women&apos;s Collection</h1>
                             <p className="text-white font-extralight text-[9px] md:text-sm text-opacity-80">
                             Featured woman collections that give you another vibe.
                             </p>

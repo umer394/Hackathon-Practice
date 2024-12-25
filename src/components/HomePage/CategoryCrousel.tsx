@@ -1,5 +1,5 @@
 import * as React from "react"
-import { cardsItem, CategoryItem } from "@/data/homepage"
+import { CategoryItem } from "@/data/homepage"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -9,7 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Button } from "../ui/button"
+
 import Link from "next/link"
 
 export function CategoryCarousel() {
