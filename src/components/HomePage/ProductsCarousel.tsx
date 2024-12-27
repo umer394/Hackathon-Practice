@@ -1,5 +1,4 @@
 import * as React from "react"
-import { productsItem } from "@/data/homepage"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -9,8 +8,32 @@ import {
 } from "@/components/ui/carousel"
 
 import Link from "next/link"
+import { client } from "@/sanity/lib/client"
+import { urlFor } from "@/sanity/lib/image"
 
-export function ProductsCarousel() {
+
+export const getProducts = async () => {
+  const res = await client.fetch("*[_type=='products']{_id,percent,title,rating,width,height,price,img,className}")
+  return res
+}
+
+
+interface ProductsItem {
+    _id:number,
+    percent:string
+    title:string
+    rating:string
+    width:number
+    height:number
+    price:string
+    img:string
+    className:string
+    
+}
+
+export async function ProductsCarousel() {
+
+  const data:ProductsItem[] = await getProducts()
   return (
     <Carousel
       opts={{
@@ -19,9 +42,9 @@ export function ProductsCarousel() {
       className="w-full "
     >
       <CarouselContent className="flex flex-wrap">
-        {productsItem.map((item) => (
+        {data.map((item) => (
           
-          <CarouselItem key={item.id} className="p-6 md:basis-1/4 lg:basis-1/4 ">
+          <CarouselItem key={item._id} className="p-6 md:basis-1/4 lg:basis-1/4 ">
             <Link href={""}>
             <div className="">
               <Card className="py-0">
@@ -44,7 +67,8 @@ export function ProductsCarousel() {
                     </div>
                   </div>
                     <div className={`${item.className}  flex justify-center items-center aspect-ratio `}>
-                    <Image src={item.img} alt={"pic"} width={item.width}  height={item.height}/>
+                    <Image src={urlFor(item.img).width(item.width).url()} alt={"pic"} width={item.width}  height={item.height}/>
+                    
                     </div>  
                   
                     {/* <div className="w-full">

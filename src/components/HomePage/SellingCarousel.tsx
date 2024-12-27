@@ -3,8 +3,32 @@ import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import Link from "next/link";
 import { Card, CardContent } from "../ui/card";
 import Image from "next/image";
-import { sellingItem } from "@/data/homepage";
-export default function SellingCarousel(){
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
+
+export async function SellingProducts(){
+  const res = await client.fetch(`*[_type=="selling"]{
+  _id,rating,width,height,percent,img,className,price,title
+}`)
+  return res
+}
+
+interface ProductsItem {
+  _id:number,
+  percent:string
+  title:string
+  rating:string
+  width:number
+  height:number
+  price:string
+  img:string
+  className?:string
+  
+}
+export default async function SellingCarousel(){
+
+  const data:ProductsItem[] = await SellingProducts()
+
     return (
       <Carousel
       opts={{
@@ -13,9 +37,9 @@ export default function SellingCarousel(){
       className="w-full"
     >
       <CarouselContent className="flex flex-wrap">
-        {sellingItem.map((item) => (
+        {data.map((item) => (
           
-          <CarouselItem key={item.id} className="md:basis-1/2 lg:basis-1/4">
+          <CarouselItem key={item._id} className="md:basis-1/2 lg:basis-1/4">
             <Link href={""}>
             <div className="p-1">
               <Card>
@@ -38,7 +62,7 @@ export default function SellingCarousel(){
                     </div>
                   </div>
                     <div className={`${item.className}  flex justify-center items-center aspect-square`}>
-                    <Image src={item.img} alt={"pic"} width={item.width}  height={item.height}/>
+                    <Image src={urlFor(item.img).width(item.width).url()} alt={"pic"} width={item.width}  height={item.height}/>
                     </div>  
 
                 </CardContent>
