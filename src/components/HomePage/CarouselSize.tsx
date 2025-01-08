@@ -19,32 +19,11 @@ import { useCart } from "../context/context"
 
 
 
-interface ProductsItem {
-  _id:number,
-  percent:string
-  title:string
-  rating:string
-  width:number
-  height:number
-  price:string
-  img:string
-  className?:string
-  quantity?: number;
-  
-}
-
-
-
 
 
 export  function CarouselSize() {
 
   const {addToCart} = useCart()
-  // const [message,setMessage] = useState<ProductsItem[]>([])
-  // function addToCart(item:ProductsItem){
-  //   setMessage((prevItem)=>[...prevItem,item])
-  // }
-  
   
   return (
     <Carousel
