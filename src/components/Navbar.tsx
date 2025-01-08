@@ -9,7 +9,6 @@ import {
     SheetTrigger,
   } from "@/components/ui/sheet"
   import { RxHamburgerMenu } from "react-icons/rx";
-import { useCart } from "./context/context";
   
 
 export default function Navbar(){

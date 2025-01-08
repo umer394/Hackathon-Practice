@@ -10,12 +10,9 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Button } from "../ui/button"
-import Link from "next/link"
-import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
 import { data } from "../CartFunctions"
-import { useContext, useState } from "react"
-import { createContext } from "react"
+
 import { useCart } from "../context/context"
 
 
