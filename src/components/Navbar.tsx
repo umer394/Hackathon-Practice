@@ -9,10 +9,12 @@ import {
     SheetTrigger,
   } from "@/components/ui/sheet"
   import { RxHamburgerMenu } from "react-icons/rx";
+import { useCart } from "./context/context";
   
 
 export default function Navbar(){
- 
+    // const {count} = useCart()
+    // console.log(count)
     return (
         <main className="flex flex-col overflow-">
             <section className="bg-black">
@@ -33,9 +35,9 @@ export default function Navbar(){
             <section className="flex border-b-[1px]  py-4 justify-between md:px-10  border-[#D9D9D9] overflow-clip  ">
                 <h4 className="font-bold text-lg pl-2 lg:pl-0 md:text-2xl">Exclusive</h4>
                 <div className="hidden lg:flex">
-                <Link href={""}><Button variant={"link"}>Home</Button></Link>
-                <Link href={""}><Button variant={"link"}>Contact</Button></Link>
-                <Link href={""}><Button variant={"link"}>About</Button></Link>
+                <Link href={"/"}><Button variant={"link"}>Home</Button></Link>
+                <Link href={"/contact"}><Button variant={"link"}>Contact</Button></Link>
+                <Link href={"/about"}><Button variant={"link"}>About</Button></Link>
                 <Link href={""}><Button variant={"link"}>Sign Up</Button></Link>
                 </div>
 
@@ -50,7 +52,9 @@ export default function Navbar(){
                         <Image src={"/navbar/heart.png"} alt={"heart"} width={20} height={18} className=" "/>     
                     </div>
                     <div >
+                        <Link href={"/cart"}>
                         <Image src={"/navbar/cart.png"} alt={"cart"} width={23} height={17} className=""/>
+                        </Link>
                     </div>
                 </div>
                 <div className="lg:hidden pr-2">
@@ -68,16 +72,18 @@ export default function Navbar(){
                                             <Image src={"/navbar/heart.png"} alt={"heart"} width={20} height={18} className=" "/>     
                                         </div>
                                         <div >
-                                            <Image src={"/navbar/cart.png"} alt={"cart"} width={23} height={17} className=""/>
+                                        <Link href={"/cart"}>
+                                        <Image src={"/navbar/cart.png"} alt={"cart"} width={23} height={17} className=""/>
+                                        </Link>
                                         </div>
                                     </div>
                                     </SheetTitle>
                                     <SheetTitle>
                                     <div className="flex flex-col space-y-4">
-                                        <Link href={""}><Button variant={"link"}>Home</Button></Link>
-                                        <Link href={""}><Button variant={"link"}>Contact</Button></Link>
-                                        <Link href={""}><Button variant={"link"}>About</Button></Link>
-                                        <Link href={""}><Button variant={"link"}>Sign Up</Button></Link>
+                                        <Button variant={"link"}><Link href={"/"}>Home</Link></Button>
+                                        <Button variant={"link"}><Link href={"/contact"}>Contact</Link></Button>
+                                        <Button variant={"link"}><Link href={"/about"}>About</Link></Button>
+                                        <Button variant={"link"}><Link href={"/"}>Sign Up</Link></Button>
                                     </div>
                                     </SheetTitle>
                                 

@@ -4,6 +4,8 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CartProvider from "@/components/context/context";
+
 
 
 const geistSans = localFont({
@@ -36,13 +38,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <CartProvider>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
-      >
-        {/* <Navbar/> */}
+      > 
+        <Navbar/>
         {children}
-        {/* <Footer/> */}
+        <Footer/>
+        
       </body>
+      </CartProvider>
     </html>
   );
 }

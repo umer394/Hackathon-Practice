@@ -40,7 +40,7 @@ export default async function SellingCarousel(){
         {data.map((item) => (
           
           <CarouselItem key={item._id} className="md:basis-1/2 lg:basis-1/4">
-            <Link href={""}>
+            <Link href={`/product/${item._id}`}>
             <div className="p-1">
               <Card>
                 <CardContent className=" bg-[#F5F5F5] aspect-square group">

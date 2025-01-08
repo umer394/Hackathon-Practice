@@ -45,7 +45,7 @@ export async function ProductsCarousel() {
         {data.map((item) => (
           
           <CarouselItem key={item._id} className="p-6 md:basis-1/4 lg:basis-1/4 ">
-            <Link href={""}>
+            <Link href={`/product/${item._id}`}>
             <div className="">
               <Card className="py-0">
                 <CardContent className=" bg-[#F5F5F5] aspect-square group">

@@ -1,4 +1,4 @@
-import * as React from "react"
+"use client"
 
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
@@ -13,13 +13,15 @@ import { Button } from "../ui/button"
 import Link from "next/link"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
+import { data } from "../CartFunctions"
+import { useContext, useState } from "react"
+import { createContext } from "react"
+import { useCart } from "../context/context"
 
-export default async function CarouselProducts() {
-  const res = await client.fetch(`*[_type=="flashsales"]{
-  _id,rating,width,height,percent,img,className,price,title
-}`)
-  return res
-}
+
+
+
+
 interface ProductsItem {
   _id:number,
   percent:string
@@ -30,11 +32,23 @@ interface ProductsItem {
   price:string
   img:string
   className?:string
+  quantity?: number;
   
 }
 
-export async function CarouselSize() {
-  const data:ProductsItem[] = await CarouselProducts()
+
+
+
+
+export  function CarouselSize() {
+
+  const {addToCart} = useCart()
+  // const [message,setMessage] = useState<ProductsItem[]>([])
+  // function addToCart(item:ProductsItem){
+  //   setMessage((prevItem)=>[...prevItem,item])
+  // }
+  
+  
   return (
     <Carousel
       opts={{
@@ -46,10 +60,10 @@ export async function CarouselSize() {
         {data.map((item) => (
           
           <CarouselItem key={item._id} className="md:basis-1/2 lg:basis-1/5">
-            <Link href={""}>
+            {/* <Link href={`/product/${item._id}`}> */}
             <div className="p-1">
               <Card>
-                <CardContent className=" bg-[#F5F5F5] aspect-square group ">
+                <CardContent className=" bg-[#F5F5F5] aspect-square  ">
                   <div className="flex flex-col">
                     
                     <div className="flex justify-between mt-4">
@@ -71,9 +85,9 @@ export async function CarouselSize() {
                     <Image src={urlFor(item.img).width(item.width).url()} alt={"pic"} width={item.width}  height={item.height}/>
                     </div>  
                   
-                    <div className="w-full">
+                    {/* <div className="w-full">
                     <Button className="hidden px-12 group-hover:block absolute bottom-[90px]">Add to cart</Button>
-                  </div>
+                  </div> */}
                 </CardContent>
                 
               </Card>
@@ -90,9 +104,9 @@ export async function CarouselSize() {
                     <h4 className="text-sm">({item.rating})</h4>
                     
                   </div>
-                 
+                  <Button onClick={()=>addToCart(item)}  className=" px-12 ">Add to cart</Button>
                 </div>
-                </Link>
+                {/* </Link> */}
           </CarouselItem>
         ))}
         
