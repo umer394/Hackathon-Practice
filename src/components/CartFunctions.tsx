@@ -21,3 +21,28 @@ export default async function CarouselProducts() {
 }
 
 export  const data:ProductsItem[] = await CarouselProducts()
+
+export const  MockData = async () => {
+  const res = await client.fetch('*[_type == "mockproductsdata"]{id,stock_quantity,brand,rating,total_orders,category,description,sizes,price,_id,gender,color,name,discount_percent,image}')
+  return res
+}
+
+type MockData = {
+  name: string,
+  image: string,
+  description: string,
+  price: number,
+  sizes: string[],
+  rating: number,
+  stock_quantity: number,
+  discount_percent: number,
+  total_orders: number,
+  brand:number,
+  color: string[],
+  category: string,
+  gender: string,
+  id: string,
+  _id:string,
+  }
+
+export const mockdata:MockData[] = await MockData()

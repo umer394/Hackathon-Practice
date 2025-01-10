@@ -14,6 +14,7 @@ import { urlFor } from "@/sanity/lib/image"
 import { data } from "../CartFunctions"
 
 import { useCart } from "../context/context"
+import Link from "next/link"
 
 
 
@@ -36,9 +37,11 @@ export  function CarouselSize() {
         {data.map((item) => (
           
           <CarouselItem key={item._id} className="md:basis-1/2 lg:basis-1/5">
-            {/* <Link href={`/product/${item._id}`}> */}
+            
             <div className="p-1">
+              <Link href={`/product/${item._id}`}>
               <Card>
+                
                 <CardContent className=" bg-[#F5F5F5] aspect-square  ">
                   <div className="flex flex-col">
                     
@@ -67,6 +70,7 @@ export  function CarouselSize() {
                 </CardContent>
                 
               </Card>
+              </Link>
             </div>
                 <div className="mt-1 space-y-2">
                   <h1 className="font-semibold text-sm">{item.title}</h1>
@@ -82,7 +86,7 @@ export  function CarouselSize() {
                   </div>
                   <Button onClick={()=>addToCart(item)}  className=" px-12 ">Add to cart</Button>
                 </div>
-                {/* </Link> */}
+                
           </CarouselItem>
         ))}
         

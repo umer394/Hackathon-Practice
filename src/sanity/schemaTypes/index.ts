@@ -4,7 +4,9 @@ import flashsales from './flashsales'
 import selling from './selling'
 
 
+import mockproductsdata from "./mocproductsdata"
+
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [productsItem,flashsales,selling]
+  types: [productsItem,flashsales,selling,mockproductsdata]
 }
