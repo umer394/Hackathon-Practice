@@ -5,6 +5,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CartProvider from "@/components/context/context";
+import { Toaster } from "sonner";
+
 
 
 
@@ -38,16 +40,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
       <CartProvider>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       > 
         <Navbar/>
         {children}
+        <Toaster />
         <Footer/>
         
       </body>
       </CartProvider>
+
+
     </html>
   );
 }

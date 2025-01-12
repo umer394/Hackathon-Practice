@@ -1,5 +1,7 @@
 "use client"
+import Link from "next/link";
 import { createContext, useState,ReactNode, useContext, useEffect } from "react";
+import { toast } from "sonner";
 
 
 interface ProductsItem {
@@ -12,15 +14,17 @@ interface ProductsItem {
     price:string
     img:string
     className?:string
-    quantity?: number;
+    quantity: number;
     
 }
 
 interface CartContextType {
     cart: ProductsItem[];
+    count:number
     addToCart: (product: ProductsItem) => void;
     // count:number;
-    // removeFromCart: (id: string) => void;
+    removeFromCart: (id: number) => void;
+    updateCartQuantity:(id:number,quantity:number)=>void
 }
 
 
@@ -33,6 +37,7 @@ interface CartProviderProps {
 
 export default function CartProvider({children}: CartProviderProps) {
     const [cart,setCart] = useState<ProductsItem[]>([])
+    const [count,setCount] = useState<number>(0)
     // const [count,setCount] = useState<number>(0)
     
     useEffect(()=>{
@@ -40,17 +45,25 @@ export default function CartProvider({children}: CartProviderProps) {
       // const storedCount = localStorage.getItem("count")
       if(storedCart){
         setCart(JSON.parse(storedCart))
+        setCount(JSON.parse(storedCart).length)
       }
       // if(storedCount){
       //   setCart(JSON.parse(storedCount))
       // }
-    },[])
+    },[1000])
 
     useEffect(()=>{
       localStorage.setItem("cart",JSON.stringify(cart))
       // localStorage.setItem("count",JSON.stringify(count))
     },[cart])
     const addToCart = (product: ProductsItem) => {
+      toast("Item added to cart!", {
+        description: `${product.title} has been successfully added to your cart.`,
+        action: {
+          label: "View Cart",
+          onClick: () => console.log("cart"), // Or navigate to cart page
+        },
+      });
         setCart((prevCart) => {
           const existingProduct = prevCart.find((item) => item._id === product._id);
           if (existingProduct) {
@@ -62,14 +75,28 @@ export default function CartProvider({children}: CartProviderProps) {
             );
             
           }
+          setCount(cart.length)
           
           return [...prevCart, { ...product, quantity: 1 }];
         });
         // setCount(cart.length)
       };
+      const removeFromCart = (id: number) => {
+        setCart((prevItems) =>
+          prevItems.filter((cartItem) => cartItem._id   !== id)
+        );
+      };  
+
+      const updateCartQuantity = (id: number, quantity: number) => {
+        setCart((prevCart) =>
+          prevCart.map((item) =>
+            item._id === id ? { ...item, quantity } : item
+          )
+        );
+      };
      
     return (
-        <CartContext.Provider value={{cart,addToCart}}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{cart,addToCart,count,removeFromCart,updateCartQuantity}}>{children}</CartContext.Provider>
     )
 }
 

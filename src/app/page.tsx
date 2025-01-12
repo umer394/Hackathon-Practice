@@ -7,6 +7,7 @@ import Selling from "@/components/HomePage/Selling";
 
 
 export default async function Home() {
+
   return (
     <main>
       <div className="max-w-[288px] md:max-w-[700px] lg:max-w-[1000px] xl:max-w-[1200px]  mx-auto">

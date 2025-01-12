@@ -15,6 +15,7 @@ import { data } from "../CartFunctions"
 
 import { useCart } from "../context/context"
 import Link from "next/link"
+import { toast } from "sonner"
 
 
 
@@ -84,7 +85,8 @@ export  function CarouselSize() {
                     <h4 className="text-sm">({item.rating})</h4>
                     
                   </div>
-                  <Button onClick={()=>addToCart(item)}  className=" px-12 ">Add to cart</Button>
+
+                  <Button variant={"outline"} onClick={()=>addToCart(item)}  className=" px-16 ml-1 ">Add to cart</Button>
                 </div>
                 
           </CarouselItem>

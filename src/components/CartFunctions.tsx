@@ -9,6 +9,7 @@ interface ProductsItem {
     price:string
     img:string
     className?:string
+    quantity:number
     
   }
 export default async function CarouselProducts() {
@@ -46,3 +47,10 @@ type MockData = {
   }
 
 export const mockdata:MockData[] = await MockData()
+
+export const getProducts = async () => {
+  const res = await client.fetch("*[_type=='products']{_id,percent,title,rating,width,height,price,img,className}")
+  return res
+}
+
+export const data1:ProductsItem[] = await getProducts()

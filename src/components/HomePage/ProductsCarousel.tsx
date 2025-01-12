@@ -1,3 +1,4 @@
+"use client"
 import * as React from "react"
 import Image from "next/image"
 import { Card, CardContent } from "@/components/ui/card"
@@ -10,12 +11,10 @@ import {
 import Link from "next/link"
 import { client } from "@/sanity/lib/client"
 import { urlFor } from "@/sanity/lib/image"
+import { Button } from "../ui/button"
+import { data1 } from "../CartFunctions"
+import { useCart } from "../context/context"
 
-
-export const getProducts = async () => {
-  const res = await client.fetch("*[_type=='products']{_id,percent,title,rating,width,height,price,img,className}")
-  return res
-}
 
 
 interface ProductsItem {
@@ -31,9 +30,9 @@ interface ProductsItem {
     
 }
 
-export async function ProductsCarousel() {
+export  function ProductsCarousel() {
 
-  const data:ProductsItem[] = await getProducts()
+  const {addToCart} = useCart()
   return (
     <Carousel
       opts={{
@@ -42,11 +41,12 @@ export async function ProductsCarousel() {
       className="w-full "
     >
       <CarouselContent className="flex flex-wrap">
-        {data.map((item) => (
+        {data1.map((item) => (
           
           <CarouselItem key={item._id} className="p-6 md:basis-1/4 lg:basis-1/4 ">
-            <Link href={`/product/${item._id}`}>
+            
             <div className="">
+            <Link href={`/product/${item._id}`}>
               <Card className="py-0">
                 <CardContent className=" bg-[#F5F5F5] aspect-square group">
                   <div className="flex flex-col">
@@ -77,6 +77,7 @@ export async function ProductsCarousel() {
                 </CardContent>
                 
               </Card>
+              </Link>
             </div>
                 <div className="mt-1 space-y-2">
                   <h1 className="font-semibold text-sm">{item.title}</h1>
@@ -90,9 +91,9 @@ export async function ProductsCarousel() {
                     <h4 className="text-sm">({item.rating})</h4>
                     
                   </div>
-                 
+                  <Button variant={"outline"} onClick={()=>addToCart(item)}  className=" px-16 ml-1 ">Add to cart</Button>
                 </div>
-                </Link>
+                
           </CarouselItem>
         ))}
         
