@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/carousel"
 
 import Link from "next/link"
-import { client } from "@/sanity/lib/client"
+
 import { urlFor } from "@/sanity/lib/image"
 import { Button } from "../ui/button"
 import { data1 } from "../CartFunctions"
@@ -17,18 +17,7 @@ import { useCart } from "../context/context"
 
 
 
-interface ProductsItem {
-    _id:number,
-    percent:string
-    title:string
-    rating:string
-    width:number
-    height:number
-    price:string
-    img:string
-    className:string
-    
-}
+
 
 export  function ProductsCarousel() {
 
