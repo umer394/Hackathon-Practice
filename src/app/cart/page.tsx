@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import IncDec from "./incdec";
-import DeleteIcon from '@mui/icons-material/Delete';
+// import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -47,7 +47,7 @@ export default function Page() {
                       {/* {count} */}
                       <Tooltip title="Delete">
                       <IconButton onClick={()=>removeFromCart(item._id)}>
-                        <DeleteIcon />
+                        {/* <DeleteIcon /> */}del
                       </IconButton>
                     </Tooltip>
                       </h1>  
